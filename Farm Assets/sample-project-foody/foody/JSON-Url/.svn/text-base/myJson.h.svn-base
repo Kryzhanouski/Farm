@@ -1,0 +1,23 @@
+//
+//  Json.h
+//  airflow
+//
+//  Created by Naveed Butt on 02/03/10.
+//
+
+#import <Foundation/Foundation.h>
+#import "JSON.h"
+
+@interface Json : NSObject {
+}
+
++ (NSString *)stringWithUrl:(NSURL *)url;
++ (id) objectWithUrl:(NSURL *)url;
++ (id) objectWthString:(NSString *) jsonString;
++(id) postToWebwithURL: (NSString *) urlString andBody:(NSString *) requestBody;
++(void) stopSpinner;
++(void) startSpinner;
+//+ (id) objectWithUrlForSaving:(NSURL *)url;
+
+
+@end

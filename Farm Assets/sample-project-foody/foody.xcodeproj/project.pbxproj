@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EC3E3C9C14600BDB0097D0C1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3E3C9B14600BDB0097D0C1 /* UIKit.framework */; };
+		EC3E3C9E14600BDB0097D0C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3E3C9D14600BDB0097D0C1 /* Foundation.framework */; };
+		EC3E3CA014600BDB0097D0C1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3E3C9F14600BDB0097D0C1 /* CoreGraphics.framework */; };
+		EC3E3CA614600BDB0097D0C1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CA414600BDB0097D0C1 /* InfoPlist.strings */; };
+		EC3E3CA814600BDB0097D0C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E3CA714600BDB0097D0C1 /* main.m */; };
+		EC3E3CAC14600BDB0097D0C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E3CAB14600BDB0097D0C1 /* AppDelegate.m */; };
+		EC3E3CAF14600BDB0097D0C1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E3CAE14600BDB0097D0C1 /* ViewController.m */; };
+		EC3E3CB214600BDB0097D0C1 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CB014600BDB0097D0C1 /* ViewController.xib */; };
+		EC3E3CBB14600C000097D0C1 /* RecipeList.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E3CB914600C000097D0C1 /* RecipeList.m */; };
+		EC3E3CBC14600C000097D0C1 /* RecipeList.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CBA14600C000097D0C1 /* RecipeList.xib */; };
+		EC3E3CBF14600C240097D0C1 /* RecipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E3CBE14600C240097D0C1 /* RecipeCell.m */; };
+		EC3E3CC114600C410097D0C1 /* RecipeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CC014600C410097D0C1 /* RecipeCell.xib */; };
+		EC3E3CC514600EF00097D0C1 /* RecipeDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E3CC314600EF00097D0C1 /* RecipeDetail.m */; };
+		EC3E3CC614600EF00097D0C1 /* RecipeDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CC414600EF00097D0C1 /* RecipeDetail.xib */; };
+		EC3E3CCA14600FA20097D0C1 /* food-large.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CC814600FA20097D0C1 /* food-large.jpg */; };
+		EC3E3CCB14600FA20097D0C1 /* food.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CC914600FA20097D0C1 /* food.jpg */; };
+		EC3E3CF6146013030097D0C1 /* back-button.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CCC146013030097D0C1 /* back-button.png */; };
+		EC3E3CF7146013030097D0C1 /* back-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CCD146013030097D0C1 /* back-button@2x.png */; };
+		EC3E3CF8146013030097D0C1 /* button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CCE146013030097D0C1 /* button-pressed.png */; };
+		EC3E3CF9146013030097D0C1 /* button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CCF146013030097D0C1 /* button-pressed@2x.png */; };
+		EC3E3CFA146013030097D0C1 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CD0146013030097D0C1 /* button.png */; };
+		EC3E3CFB146013030097D0C1 /* button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CD1146013030097D0C1 /* button@2x.png */; };
+		EC3E3CFC146013030097D0C1 /* country.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CD2146013030097D0C1 /* country.png */; };
+		EC3E3CFD146013030097D0C1 /* country@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CD3146013030097D0C1 /* country@2x.png */; };
+		EC3E3CFE146013030097D0C1 /* details-photo-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CD4146013030097D0C1 /* details-photo-mask.png */; };
+		EC3E3CFF146013030097D0C1 /* details-photo-mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CD5146013030097D0C1 /* details-photo-mask@2x.png */; };
+		EC3E3D00146013030097D0C1 /* ingredients-list.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CD6146013030097D0C1 /* ingredients-list.png */; };
+		EC3E3D01146013030097D0C1 /* ingredients-list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CD7146013030097D0C1 /* ingredients-list@2x.png */; };
+		EC3E3D02146013030097D0C1 /* input-text.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CD8146013030097D0C1 /* input-text.png */; };
+		EC3E3D03146013030097D0C1 /* input-text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CD9146013030097D0C1 /* input-text@2x.png */; };
+		EC3E3D04146013030097D0C1 /* leather-background.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CDA146013030097D0C1 /* leather-background.png */; };
+		EC3E3D05146013030097D0C1 /* leather-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CDB146013030097D0C1 /* leather-background@2x.png */; };
+		EC3E3D06146013030097D0C1 /* list-item.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CDC146013030097D0C1 /* list-item.png */; };
+		EC3E3D07146013030097D0C1 /* list-item@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CDD146013030097D0C1 /* list-item@2x.png */; };
+		EC3E3D08146013030097D0C1 /* list-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CDE146013030097D0C1 /* list-mask.png */; };
+		EC3E3D09146013030097D0C1 /* list-mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CDF146013030097D0C1 /* list-mask@2x.png */; };
+		EC3E3D0A146013030097D0C1 /* navbar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CE0146013030097D0C1 /* navbar-icon.png */; };
+		EC3E3D0B146013030097D0C1 /* navbar-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CE1146013030097D0C1 /* navbar-icon@2x.png */; };
+		EC3E3D0C146013030097D0C1 /* navbar.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CE2146013030097D0C1 /* navbar.png */; };
+		EC3E3D0D146013030097D0C1 /* navbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CE3146013030097D0C1 /* navbar@2x.png */; };
+		EC3E3D14146013030097D0C1 /* step-bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CEA146013030097D0C1 /* step-bullet.png */; };
+		EC3E3D15146013030097D0C1 /* step-bullet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CEB146013030097D0C1 /* step-bullet@2x.png */; };
+		EC3E3D1A146013030097D0C1 /* tabbar-item.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CF0146013030097D0C1 /* tabbar-item.png */; };
+		EC3E3D1B146013030097D0C1 /* tabbar-item@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CF1146013030097D0C1 /* tabbar-item@2x.png */; };
+		EC3E3D1C146013030097D0C1 /* tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CF2146013030097D0C1 /* tabbar.png */; };
+		EC3E3D1D146013030097D0C1 /* tabbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3E3CF3146013030097D0C1 /* tabbar@2x.png */; };
+		EC3E3D591464390B0097D0C1 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E3D4B1464390B0097D0C1 /* NSObject+SBJSON.m */; };
+		EC3E3D5A1464390B0097D0C1 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E3D4D1464390B0097D0C1 /* NSString+SBJSON.m */; };
+		EC3E3D5B1464390B0097D0C1 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E3D4F1464390B0097D0C1 /* SBJSON.m */; };
+		EC3E3D5C1464390B0097D0C1 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E3D511464390B0097D0C1 /* SBJsonBase.m */; };
+		EC3E3D5D1464390B0097D0C1 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E3D531464390B0097D0C1 /* SBJsonParser.m */; };
+		EC3E3D5E1464390B0097D0C1 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E3D551464390B0097D0C1 /* SBJsonWriter.m */; };
+		EC3E3D5F1464390B0097D0C1 /* myJson.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E3D581464390B0097D0C1 /* myJson.m */; };
+		EC3E3D631464393A0097D0C1 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E3D621464393A0097D0C1 /* Recipe.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EC3E3C9714600BDB0097D0C1 /* foody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = foody.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC3E3C9B14600BDB0097D0C1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		EC3E3C9D14600BDB0097D0C1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EC3E3C9F14600BDB0097D0C1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		EC3E3CA314600BDB0097D0C1 /* foody-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "foody-Info.plist"; sourceTree = "<group>"; };
+		EC3E3CA514600BDB0097D0C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EC3E3CA714600BDB0097D0C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EC3E3CA914600BDB0097D0C1 /* foody-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "foody-Prefix.pch"; sourceTree = "<group>"; };
+		EC3E3CAA14600BDB0097D0C1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EC3E3CAB14600BDB0097D0C1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EC3E3CAD14600BDB0097D0C1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EC3E3CAE14600BDB0097D0C1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EC3E3CB114600BDB0097D0C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		EC3E3CB814600C000097D0C1 /* RecipeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecipeList.h; path = foody/RecipeList.h; sourceTree = "<group>"; };
+		EC3E3CB914600C000097D0C1 /* RecipeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipeList.m; path = foody/RecipeList.m; sourceTree = "<group>"; };
+		EC3E3CBA14600C000097D0C1 /* RecipeList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecipeList.xib; path = foody/RecipeList.xib; sourceTree = "<group>"; };
+		EC3E3CBD14600C240097D0C1 /* RecipeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecipeCell.h; path = foody/RecipeCell.h; sourceTree = "<group>"; };
+		EC3E3CBE14600C240097D0C1 /* RecipeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipeCell.m; path = foody/RecipeCell.m; sourceTree = "<group>"; };
+		EC3E3CC014600C410097D0C1 /* RecipeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecipeCell.xib; path = foody/RecipeCell.xib; sourceTree = "<group>"; };
+		EC3E3CC214600EF00097D0C1 /* RecipeDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecipeDetail.h; path = foody/RecipeDetail.h; sourceTree = "<group>"; };
+		EC3E3CC314600EF00097D0C1 /* RecipeDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipeDetail.m; path = foody/RecipeDetail.m; sourceTree = "<group>"; };
+		EC3E3CC414600EF00097D0C1 /* RecipeDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecipeDetail.xib; path = foody/RecipeDetail.xib; sourceTree = "<group>"; };
+		EC3E3CC814600FA20097D0C1 /* food-large.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "food-large.jpg"; sourceTree = "<group>"; };
+		EC3E3CC914600FA20097D0C1 /* food.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = food.jpg; sourceTree = "<group>"; };
+		EC3E3CCC146013030097D0C1 /* back-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button.png"; sourceTree = "<group>"; };
+		EC3E3CCD146013030097D0C1 /* back-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button@2x.png"; sourceTree = "<group>"; };
+		EC3E3CCE146013030097D0C1 /* button-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-pressed.png"; sourceTree = "<group>"; };
+		EC3E3CCF146013030097D0C1 /* button-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-pressed@2x.png"; sourceTree = "<group>"; };
+		EC3E3CD0146013030097D0C1 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		EC3E3CD1146013030097D0C1 /* button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button@2x.png"; sourceTree = "<group>"; };
+		EC3E3CD2146013030097D0C1 /* country.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = country.png; sourceTree = "<group>"; };
+		EC3E3CD3146013030097D0C1 /* country@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "country@2x.png"; sourceTree = "<group>"; };
+		EC3E3CD4146013030097D0C1 /* details-photo-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "details-photo-mask.png"; sourceTree = "<group>"; };
+		EC3E3CD5146013030097D0C1 /* details-photo-mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "details-photo-mask@2x.png"; sourceTree = "<group>"; };
+		EC3E3CD6146013030097D0C1 /* ingredients-list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ingredients-list.png"; sourceTree = "<group>"; };
+		EC3E3CD7146013030097D0C1 /* ingredients-list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ingredients-list@2x.png"; sourceTree = "<group>"; };
+		EC3E3CD8146013030097D0C1 /* input-text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input-text.png"; sourceTree = "<group>"; };
+		EC3E3CD9146013030097D0C1 /* input-text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input-text@2x.png"; sourceTree = "<group>"; };
+		EC3E3CDA146013030097D0C1 /* leather-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leather-background.png"; sourceTree = "<group>"; };
+		EC3E3CDB146013030097D0C1 /* leather-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leather-background@2x.png"; sourceTree = "<group>"; };
+		EC3E3CDC146013030097D0C1 /* list-item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-item.png"; sourceTree = "<group>"; };
+		EC3E3CDD146013030097D0C1 /* list-item@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-item@2x.png"; sourceTree = "<group>"; };
+		EC3E3CDE146013030097D0C1 /* list-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-mask.png"; sourceTree = "<group>"; };
+		EC3E3CDF146013030097D0C1 /* list-mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-mask@2x.png"; sourceTree = "<group>"; };
+		EC3E3CE0146013030097D0C1 /* navbar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-icon.png"; sourceTree = "<group>"; };
+		EC3E3CE1146013030097D0C1 /* navbar-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-icon@2x.png"; sourceTree = "<group>"; };
+		EC3E3CE2146013030097D0C1 /* navbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbar.png; sourceTree = "<group>"; };
+		EC3E3CE3146013030097D0C1 /* navbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar@2x.png"; sourceTree = "<group>"; };
+		EC3E3CEA146013030097D0C1 /* step-bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "step-bullet.png"; sourceTree = "<group>"; };
+		EC3E3CEB146013030097D0C1 /* step-bullet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "step-bullet@2x.png"; sourceTree = "<group>"; };
+		EC3E3CF0146013030097D0C1 /* tabbar-item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-item.png"; sourceTree = "<group>"; };
+		EC3E3CF1146013030097D0C1 /* tabbar-item@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-item@2x.png"; sourceTree = "<group>"; };
+		EC3E3CF2146013030097D0C1 /* tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar.png; sourceTree = "<group>"; };
+		EC3E3CF3146013030097D0C1 /* tabbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar@2x.png"; sourceTree = "<group>"; };
+		EC3E3D491464390B0097D0C1 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		EC3E3D4A1464390B0097D0C1 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		EC3E3D4B1464390B0097D0C1 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		EC3E3D4C1464390B0097D0C1 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		EC3E3D4D1464390B0097D0C1 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		EC3E3D4E1464390B0097D0C1 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		EC3E3D4F1464390B0097D0C1 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		EC3E3D501464390B0097D0C1 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		EC3E3D511464390B0097D0C1 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		EC3E3D521464390B0097D0C1 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		EC3E3D531464390B0097D0C1 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		EC3E3D541464390B0097D0C1 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		EC3E3D551464390B0097D0C1 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		EC3E3D571464390B0097D0C1 /* myJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myJson.h; sourceTree = "<group>"; };
+		EC3E3D581464390B0097D0C1 /* myJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myJson.m; sourceTree = "<group>"; };
+		EC3E3D611464393A0097D0C1 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipe.h; sourceTree = "<group>"; };
+		EC3E3D621464393A0097D0C1 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EC3E3C9414600BDB0097D0C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC3E3C9C14600BDB0097D0C1 /* UIKit.framework in Frameworks */,
+				EC3E3C9E14600BDB0097D0C1 /* Foundation.framework in Frameworks */,
+				EC3E3CA014600BDB0097D0C1 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EC3E3C8C14600BDB0097D0C1 = {
+			isa = PBXGroup;
+			children = (
+				EC3E3D611464393A0097D0C1 /* Recipe.h */,
+				EC3E3D621464393A0097D0C1 /* Recipe.m */,
+				EC3E3D481464390B0097D0C1 /* JSON */,
+				EC3E3D561464390B0097D0C1 /* JSON-Url */,
+				EC3E3CC714600FA20097D0C1 /* Resources */,
+				EC3E3CC214600EF00097D0C1 /* RecipeDetail.h */,
+				EC3E3CC314600EF00097D0C1 /* RecipeDetail.m */,
+				EC3E3CC414600EF00097D0C1 /* RecipeDetail.xib */,
+				EC3E3CC014600C410097D0C1 /* RecipeCell.xib */,
+				EC3E3CBD14600C240097D0C1 /* RecipeCell.h */,
+				EC3E3CBE14600C240097D0C1 /* RecipeCell.m */,
+				EC3E3CB814600C000097D0C1 /* RecipeList.h */,
+				EC3E3CB914600C000097D0C1 /* RecipeList.m */,
+				EC3E3CBA14600C000097D0C1 /* RecipeList.xib */,
+				EC3E3CA114600BDB0097D0C1 /* foody */,
+				EC3E3C9A14600BDB0097D0C1 /* Frameworks */,
+				EC3E3C9814600BDB0097D0C1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EC3E3C9814600BDB0097D0C1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC3E3C9714600BDB0097D0C1 /* foody.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EC3E3C9A14600BDB0097D0C1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EC3E3C9B14600BDB0097D0C1 /* UIKit.framework */,
+				EC3E3C9D14600BDB0097D0C1 /* Foundation.framework */,
+				EC3E3C9F14600BDB0097D0C1 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EC3E3CA114600BDB0097D0C1 /* foody */ = {
+			isa = PBXGroup;
+			children = (
+				EC3E3CAA14600BDB0097D0C1 /* AppDelegate.h */,
+				EC3E3CAB14600BDB0097D0C1 /* AppDelegate.m */,
+				EC3E3CAD14600BDB0097D0C1 /* ViewController.h */,
+				EC3E3CAE14600BDB0097D0C1 /* ViewController.m */,
+				EC3E3CB014600BDB0097D0C1 /* ViewController.xib */,
+				EC3E3CA214600BDB0097D0C1 /* Supporting Files */,
+			);
+			path = foody;
+			sourceTree = "<group>";
+		};
+		EC3E3CA214600BDB0097D0C1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC3E3CA314600BDB0097D0C1 /* foody-Info.plist */,
+				EC3E3CA414600BDB0097D0C1 /* InfoPlist.strings */,
+				EC3E3CA714600BDB0097D0C1 /* main.m */,
+				EC3E3CA914600BDB0097D0C1 /* foody-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EC3E3CC714600FA20097D0C1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EC3E3CCC146013030097D0C1 /* back-button.png */,
+				EC3E3CCD146013030097D0C1 /* back-button@2x.png */,
+				EC3E3CCE146013030097D0C1 /* button-pressed.png */,
+				EC3E3CCF146013030097D0C1 /* button-pressed@2x.png */,
+				EC3E3CD0146013030097D0C1 /* button.png */,
+				EC3E3CD1146013030097D0C1 /* button@2x.png */,
+				EC3E3CD2146013030097D0C1 /* country.png */,
+				EC3E3CD3146013030097D0C1 /* country@2x.png */,
+				EC3E3CD4146013030097D0C1 /* details-photo-mask.png */,
+				EC3E3CD5146013030097D0C1 /* details-photo-mask@2x.png */,
+				EC3E3CD6146013030097D0C1 /* ingredients-list.png */,
+				EC3E3CD7146013030097D0C1 /* ingredients-list@2x.png */,
+				EC3E3CD8146013030097D0C1 /* input-text.png */,
+				EC3E3CD9146013030097D0C1 /* input-text@2x.png */,
+				EC3E3CDA146013030097D0C1 /* leather-background.png */,
+				EC3E3CDB146013030097D0C1 /* leather-background@2x.png */,
+				EC3E3CDC146013030097D0C1 /* list-item.png */,
+				EC3E3CDD146013030097D0C1 /* list-item@2x.png */,
+				EC3E3CDE146013030097D0C1 /* list-mask.png */,
+				EC3E3CDF146013030097D0C1 /* list-mask@2x.png */,
+				EC3E3CE0146013030097D0C1 /* navbar-icon.png */,
+				EC3E3CE1146013030097D0C1 /* navbar-icon@2x.png */,
+				EC3E3CE2146013030097D0C1 /* navbar.png */,
+				EC3E3CE3146013030097D0C1 /* navbar@2x.png */,
+				EC3E3CEA146013030097D0C1 /* step-bullet.png */,
+				EC3E3CEB146013030097D0C1 /* step-bullet@2x.png */,
+				EC3E3CF0146013030097D0C1 /* tabbar-item.png */,
+				EC3E3CF1146013030097D0C1 /* tabbar-item@2x.png */,
+				EC3E3CF2146013030097D0C1 /* tabbar.png */,
+				EC3E3CF3146013030097D0C1 /* tabbar@2x.png */,
+				EC3E3CC814600FA20097D0C1 /* food-large.jpg */,
+				EC3E3CC914600FA20097D0C1 /* food.jpg */,
+			);
+			name = Resources;
+			path = foody/Resources;
+			sourceTree = "<group>";
+		};
+		EC3E3D481464390B0097D0C1 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				EC3E3D491464390B0097D0C1 /* JSON.h */,
+				EC3E3D4A1464390B0097D0C1 /* NSObject+SBJSON.h */,
+				EC3E3D4B1464390B0097D0C1 /* NSObject+SBJSON.m */,
+				EC3E3D4C1464390B0097D0C1 /* NSString+SBJSON.h */,
+				EC3E3D4D1464390B0097D0C1 /* NSString+SBJSON.m */,
+				EC3E3D4E1464390B0097D0C1 /* SBJSON.h */,
+				EC3E3D4F1464390B0097D0C1 /* SBJSON.m */,
+				EC3E3D501464390B0097D0C1 /* SBJsonBase.h */,
+				EC3E3D511464390B0097D0C1 /* SBJsonBase.m */,
+				EC3E3D521464390B0097D0C1 /* SBJsonParser.h */,
+				EC3E3D531464390B0097D0C1 /* SBJsonParser.m */,
+				EC3E3D541464390B0097D0C1 /* SBJsonWriter.h */,
+				EC3E3D551464390B0097D0C1 /* SBJsonWriter.m */,
+			);
+			name = JSON;
+			path = foody/JSON;
+			sourceTree = "<group>";
+		};
+		EC3E3D561464390B0097D0C1 /* JSON-Url */ = {
+			isa = PBXGroup;
+			children = (
+				EC3E3D571464390B0097D0C1 /* myJson.h */,
+				EC3E3D581464390B0097D0C1 /* myJson.m */,
+			);
+			name = "JSON-Url";
+			path = "foody/JSON-Url";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EC3E3C9614600BDB0097D0C1 /* foody */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC3E3CB514600BDB0097D0C1 /* Build configuration list for PBXNativeTarget "foody" */;
+			buildPhases = (
+				EC3E3C9314600BDB0097D0C1 /* Sources */,
+				EC3E3C9414600BDB0097D0C1 /* Frameworks */,
+				EC3E3C9514600BDB0097D0C1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = foody;
+			productName = foody;
+			productReference = EC3E3C9714600BDB0097D0C1 /* foody.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EC3E3C8E14600BDB0097D0C1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = EC3E3C9114600BDB0097D0C1 /* Build configuration list for PBXProject "foody" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EC3E3C8C14600BDB0097D0C1;
+			productRefGroup = EC3E3C9814600BDB0097D0C1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EC3E3C9614600BDB0097D0C1 /* foody */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EC3E3C9514600BDB0097D0C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC3E3CA614600BDB0097D0C1 /* InfoPlist.strings in Resources */,
+				EC3E3CB214600BDB0097D0C1 /* ViewController.xib in Resources */,
+				EC3E3CBC14600C000097D0C1 /* RecipeList.xib in Resources */,
+				EC3E3CC114600C410097D0C1 /* RecipeCell.xib in Resources */,
+				EC3E3CC614600EF00097D0C1 /* RecipeDetail.xib in Resources */,
+				EC3E3CCA14600FA20097D0C1 /* food-large.jpg in Resources */,
+				EC3E3CCB14600FA20097D0C1 /* food.jpg in Resources */,
+				EC3E3CF6146013030097D0C1 /* back-button.png in Resources */,
+				EC3E3CF7146013030097D0C1 /* back-button@2x.png in Resources */,
+				EC3E3CF8146013030097D0C1 /* button-pressed.png in Resources */,
+				EC3E3CF9146013030097D0C1 /* button-pressed@2x.png in Resources */,
+				EC3E3CFA146013030097D0C1 /* button.png in Resources */,
+				EC3E3CFB146013030097D0C1 /* button@2x.png in Resources */,
+				EC3E3CFC146013030097D0C1 /* country.png in Resources */,
+				EC3E3CFD146013030097D0C1 /* country@2x.png in Resources */,
+				EC3E3CFE146013030097D0C1 /* details-photo-mask.png in Resources */,
+				EC3E3CFF146013030097D0C1 /* details-photo-mask@2x.png in Resources */,
+				EC3E3D00146013030097D0C1 /* ingredients-list.png in Resources */,
+				EC3E3D01146013030097D0C1 /* ingredients-list@2x.png in Resources */,
+				EC3E3D02146013030097D0C1 /* input-text.png in Resources */,
+				EC3E3D03146013030097D0C1 /* input-text@2x.png in Resources */,
+				EC3E3D04146013030097D0C1 /* leather-background.png in Resources */,
+				EC3E3D05146013030097D0C1 /* leather-background@2x.png in Resources */,
+				EC3E3D06146013030097D0C1 /* list-item.png in Resources */,
+				EC3E3D07146013030097D0C1 /* list-item@2x.png in Resources */,
+				EC3E3D08146013030097D0C1 /* list-mask.png in Resources */,
+				EC3E3D09146013030097D0C1 /* list-mask@2x.png in Resources */,
+				EC3E3D0A146013030097D0C1 /* navbar-icon.png in Resources */,
+				EC3E3D0B146013030097D0C1 /* navbar-icon@2x.png in Resources */,
+				EC3E3D0C146013030097D0C1 /* navbar.png in Resources */,
+				EC3E3D0D146013030097D0C1 /* navbar@2x.png in Resources */,
+				EC3E3D14146013030097D0C1 /* step-bullet.png in Resources */,
+				EC3E3D15146013030097D0C1 /* step-bullet@2x.png in Resources */,
+				EC3E3D1A146013030097D0C1 /* tabbar-item.png in Resources */,
+				EC3E3D1B146013030097D0C1 /* tabbar-item@2x.png in Resources */,
+				EC3E3D1C146013030097D0C1 /* tabbar.png in Resources */,
+				EC3E3D1D146013030097D0C1 /* tabbar@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EC3E3C9314600BDB0097D0C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC3E3CA814600BDB0097D0C1 /* main.m in Sources */,
+				EC3E3CAC14600BDB0097D0C1 /* AppDelegate.m in Sources */,
+				EC3E3CAF14600BDB0097D0C1 /* ViewController.m in Sources */,
+				EC3E3CBB14600C000097D0C1 /* RecipeList.m in Sources */,
+				EC3E3CBF14600C240097D0C1 /* RecipeCell.m in Sources */,
+				EC3E3CC514600EF00097D0C1 /* RecipeDetail.m in Sources */,
+				EC3E3D591464390B0097D0C1 /* NSObject+SBJSON.m in Sources */,
+				EC3E3D5A1464390B0097D0C1 /* NSString+SBJSON.m in Sources */,
+				EC3E3D5B1464390B0097D0C1 /* SBJSON.m in Sources */,
+				EC3E3D5C1464390B0097D0C1 /* SBJsonBase.m in Sources */,
+				EC3E3D5D1464390B0097D0C1 /* SBJsonParser.m in Sources */,
+				EC3E3D5E1464390B0097D0C1 /* SBJsonWriter.m in Sources */,
+				EC3E3D5F1464390B0097D0C1 /* myJson.m in Sources */,
+				EC3E3D631464393A0097D0C1 /* Recipe.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EC3E3CA414600BDB0097D0C1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC3E3CA514600BDB0097D0C1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		EC3E3CB014600BDB0097D0C1 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC3E3CB114600BDB0097D0C1 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EC3E3CB314600BDB0097D0C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EC3E3CB414600BDB0097D0C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EC3E3CB614600BDB0097D0C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "foody/foody-Prefix.pch";
+				INFOPLIST_FILE = "foody/foody-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		EC3E3CB714600BDB0097D0C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "foody/foody-Prefix.pch";
+				INFOPLIST_FILE = "foody/foody-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EC3E3C9114600BDB0097D0C1 /* Build configuration list for PBXProject "foody" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC3E3CB314600BDB0097D0C1 /* Debug */,
+				EC3E3CB414600BDB0097D0C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC3E3CB514600BDB0097D0C1 /* Build configuration list for PBXNativeTarget "foody" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC3E3CB614600BDB0097D0C1 /* Debug */,
+				EC3E3CB714600BDB0097D0C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EC3E3C8E14600BDB0097D0C1 /* Project object */;
+}

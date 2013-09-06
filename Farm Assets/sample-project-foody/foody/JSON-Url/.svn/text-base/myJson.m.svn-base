@@ -1,0 +1,121 @@
+//
+//  Json.m
+//  airflow
+//
+//  Created by Naveed Butt on 02/03/10.
+
+#import "myJson.h"
+//#import "discussthegameAppDelegate.h"
+
+@implementation Json
+
++(void) stopSpinner
+{
+    //[APPDELEGATE hideBusyView];
+}
+
++(void) startSpinner
+{
+	//[APPDELEGATE showBusyView];
+}
+
+
++ (NSString *)stringWithUrl:(NSURL *)url
+{
+	NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url
+												cachePolicy:NSURLRequestReturnCacheDataElseLoad
+											timeoutInterval:30];
+	// Fetch the JSON response
+	NSData *urlData;
+	NSURLResponse *response;
+	NSError *error;
+	
+	// Make synchronous request
+	urlData = [NSURLConnection sendSynchronousRequest:urlRequest
+									returningResponse:&response
+												error:&error];
+   
+ 	// Construct a String around the Data from the response
+	return [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
+}
+
++ (id) objectWithUrl:(NSURL *)url
+{
+	NSThread * t1 = [[NSThread alloc] initWithTarget:self selector:@selector(startSpinner) object:nil];
+	[t1 start];
+	
+	SBJSON *jsonParser = [SBJSON new];
+	NSString *jsonString = [self stringWithUrl:url];
+	//	NSLog(@"%@",jsonString);
+	// Parse the JSON into an Object
+	
+ 
+	[self performSelector:@selector(stopSpinner) withObject:nil];
+	
+	[t1 cancel];
+	//[t1 release];
+	
+	id obj = [jsonParser objectWithString:jsonString error:NULL];
+    return  obj;
+    
+}
+
++ (id) objectWithUrlNoSpinner:(NSURL *)url
+{
+
+	SBJSON *jsonParser = [SBJSON new];
+	NSString *jsonString = [self stringWithUrl:url];
+	
+	return [jsonParser objectWithString:jsonString error:NULL];
+}
+
+/*
++ (id) objectWithUrlForSaving:(NSURL *)url
+{	
+	[NSThread detachNewThreadSelector:@selector(showSavingView:) toTarget:[discussthegameAppDelegate class] withObject:@"Saving..."];
+	//[NSThread sleepForTimeInterval:1.0];
+
+	SBJSON *jsonParser = [SBJSON new];
+	NSString *jsonString = [self stringWithUrl:url];
+	
+	
+		
+	return [jsonParser objectWithString:jsonString error:NULL];
+}
+*/
+
++ (id) objectWthString:(NSString *) jsonString
+{
+	NSLog(@"%@", jsonString);
+	SBJSON *jsonParser = [SBJSON new];
+	return [jsonParser objectWithString:jsonString error:NULL];
+}
+
+
+
+
++(id) postToWebwithURL: (NSString *) urlString andBody:(NSString *) requestBody
+{
+	NSURL * url = [NSURL URLWithString:urlString];
+	
+	NSMutableURLRequest * theRequest = [[[NSMutableURLRequest alloc] init] autorelease];
+	
+	NSMutableData *theRequestData = [NSMutableData dataWithBytes: [requestBody UTF8String] length: [requestBody length]];
+	
+	[theRequest setHTTPBody:theRequestData];
+	
+	[theRequest setURL:url];
+	[theRequest setCachePolicy:NSURLRequestReloadIgnoringCacheData];
+	[theRequest setTimeoutInterval:10];
+	[theRequest setHTTPMethod:@"POST"];
+	[theRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+	[theRequest setValue:[NSString stringWithFormat:@"%d",[requestBody length] ] forHTTPHeaderField:@"Content-Length"];
+
+
+	NSMutableData * webData = (NSMutableData *) [NSURLConnection sendSynchronousRequest: theRequest returningResponse: nil error: nil ];
+	
+	NSString * str = [[[NSString alloc] initWithData:webData encoding:NSASCIIStringEncoding] autorelease];
+//	NSLog(str);
+	return [self objectWthString:str];
+}
+@end
