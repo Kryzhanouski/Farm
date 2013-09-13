@@ -12,4 +12,10 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+
+    #import "Treatment.h"
+    #import "Illness.h"
+    #import "Drug.h"
+    #import "Animal.h"
+
 #endif

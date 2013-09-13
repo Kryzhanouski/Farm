@@ -10,10 +10,11 @@
 #import "MDIllnessListViewController.h"
 #import "MDDrugListViewController.h"
 #import "MDDatePickerViewController.h"
+#import <EXTKeyPathCoding.h>
 
 @interface MDEditTreatmentViewController ()
 @property (nonatomic, strong) NSManagedObjectContext* childContext;
-@property (nonatomic, strong) NSManagedObject* object;
+@property (nonatomic, strong) Treatment* object;
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *treatmentDateCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *illnessCell;
@@ -50,13 +51,13 @@
     [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
     
     if (self.treatmentID != nil) {
-        self.object = [[self childContext] objectWithID:self.treatmentID];
+        self.object = (Treatment*)[[self childContext] objectWithID:self.treatmentID];
     } else {
-        self.object = [NSEntityDescription insertNewObjectForEntityForName:@"Treatment" inManagedObjectContext:[self childContext]];
+        self.object = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Treatment class]) inManagedObjectContext:[self childContext]];
     }
 
-    if ([self.object valueForKey:@"date"] == nil) {
-        [self.object setValue:[NSDate date] forKey:@"date"];
+    if (self.object.date == nil) {
+        self.object.date = [NSDate date];
     }
     
     [self refreshData];
@@ -73,14 +74,14 @@
 
 - (void)refreshData {
     NSString* dateString = @"";
-    NSDate* date = [self.object valueForKey:@"date"];
+    NSDate* date = self.object.date;
     if (date) {
         dateString = [dateString stringByAppendingFormat:@" %@",[self.dateFormatter stringFromDate:date]];
     }
     self.treatmentDateCell.detailTextLabel.text = dateString;
-    self.illnessCell.detailTextLabel.text = [self.object valueForKeyPath:@"illness.name"];
-    self.drugCell.detailTextLabel.text = [self.object valueForKeyPath:@"drug.name"];
-    self.descriptionTextView.text = [self.object valueForKey:@"result"];
+    self.illnessCell.detailTextLabel.text = self.object.illness.name;
+    self.drugCell.detailTextLabel.text = self.object.drug.name;
+    self.descriptionTextView.text = self.object.result;
     
     [self.tableView reloadData];
 }
@@ -88,7 +89,7 @@
 - (IBAction)doneAction:(id)sender {
     BOOL isValid = YES;
     NSString* errorMessage = nil;
-    NSManagedObject* ill = [self.object valueForKey:@"illness"];
+    Illness* ill = self.object.illness;
     
     if (ill == nil) {
         isValid = NO;
@@ -101,9 +102,9 @@
     }
     
     if (isValid) {
-        [self.object setValue:self.descriptionTextView.text forKey:@"result"];
-        NSManagedObject* cow = [[self childContext] objectWithID:self.cowID];
-        NSMutableSet* treatments = [cow mutableSetValueForKey:@"treatments"];
+        self.object.result = self.descriptionTextView.text;
+        Animal* cow = (Animal*)[[self childContext] objectWithID:self.cowID];
+        NSMutableSet* treatments = [cow mutableSetValueForKey:@keypath(Animal.new, treatments)];
         [treatments addObject:self.object];
         [[self childContext] save:nil];
         [self.navigationController popViewControllerAnimated:YES];

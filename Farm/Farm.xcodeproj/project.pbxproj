@@ -17,6 +17,11 @@
 		47555082178C55860048ED50 /* medikit_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 47555080178C55860048ED50 /* medikit_icon.png */; };
 		47555083178C55860048ED50 /* white-red-icon-medical.png in Resources */ = {isa = PBXBuildFile; fileRef = 47555081178C55860048ED50 /* white-red-icon-medical.png */; };
 		47555087178C5EFC0048ED50 /* MDTreatmentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47555086178C5EFC0048ED50 /* MDTreatmentListViewController.m */; };
+		47699D6F17E33DC100FFC094 /* Illness.m in Sources */ = {isa = PBXBuildFile; fileRef = 47699D6E17E33DC100FFC094 /* Illness.m */; };
+		47699D7217E33DC100FFC094 /* Treatment.m in Sources */ = {isa = PBXBuildFile; fileRef = 47699D7117E33DC100FFC094 /* Treatment.m */; };
+		47699D7517E33DC100FFC094 /* Animal.m in Sources */ = {isa = PBXBuildFile; fileRef = 47699D7417E33DC100FFC094 /* Animal.m */; };
+		47699D7817E33DC100FFC094 /* Drug.m in Sources */ = {isa = PBXBuildFile; fileRef = 47699D7717E33DC100FFC094 /* Drug.m */; };
+		47699E0217E34A5C00FFC094 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47699E0117E34A5B00FFC094 /* SenTestingKit.framework */; };
 		47928F8F17871E4E005251B3 /* MDDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47928F8E17871E4E005251B3 /* MDDatePickerViewController.m */; };
 		4799C821178AAC6100A5C5A0 /* MDEditTreatmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4799C820178AAC6100A5C5A0 /* MDEditTreatmentViewController.m */; };
 		4799C829178ACB6B00A5C5A0 /* MDDetailBehaviorSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = 4799C828178ACB6B00A5C5A0 /* MDDetailBehaviorSimple.m */; };
@@ -56,6 +61,7 @@
 		929A39B717808A0100B8DC05 /* Drug2.png in Resources */ = {isa = PBXBuildFile; fileRef = 929A39B617808A0100B8DC05 /* Drug2.png */; };
 		92BB88CB178608B600676B00 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92BB88CA178608B600676B00 /* MainStoryboard.storyboard */; };
 		92E8E2CF1786395600C541D6 /* MDSelectGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E8E2CE1786395600C541D6 /* MDSelectGroupViewController.m */; };
+		A50018EDF869476AAE2F127C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3516D50DF941488BE48DFD /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +76,15 @@
 		47555081178C55860048ED50 /* white-red-icon-medical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-red-icon-medical.png"; sourceTree = "<group>"; };
 		47555085178C5EFC0048ED50 /* MDTreatmentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTreatmentListViewController.h; sourceTree = "<group>"; };
 		47555086178C5EFC0048ED50 /* MDTreatmentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTreatmentListViewController.m; sourceTree = "<group>"; };
+		47699D6D17E33DC100FFC094 /* Illness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Illness.h; sourceTree = "<group>"; };
+		47699D6E17E33DC100FFC094 /* Illness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Illness.m; sourceTree = "<group>"; };
+		47699D7017E33DC100FFC094 /* Treatment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Treatment.h; sourceTree = "<group>"; };
+		47699D7117E33DC100FFC094 /* Treatment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Treatment.m; sourceTree = "<group>"; };
+		47699D7317E33DC100FFC094 /* Animal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animal.h; sourceTree = "<group>"; };
+		47699D7417E33DC100FFC094 /* Animal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animal.m; sourceTree = "<group>"; };
+		47699D7617E33DC100FFC094 /* Drug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drug.h; sourceTree = "<group>"; };
+		47699D7717E33DC100FFC094 /* Drug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drug.m; sourceTree = "<group>"; };
+		47699E0117E34A5B00FFC094 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		47928F8D17871E4D005251B3 /* MDDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDatePickerViewController.h; sourceTree = "<group>"; };
 		47928F8E17871E4E005251B3 /* MDDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDatePickerViewController.m; sourceTree = "<group>"; };
 		4799C81F178AAC6100A5C5A0 /* MDEditTreatmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDEditTreatmentViewController.h; sourceTree = "<group>"; };
@@ -88,6 +103,7 @@
 		47F1ADCA1781C48900695B29 /* MDEditIllnessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDEditIllnessViewController.m; sourceTree = "<group>"; };
 		47F1ADCD1781C48900695B29 /* MDIllnessListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDIllnessListViewController.h; sourceTree = "<group>"; };
 		47F1ADCE1781C48900695B29 /* MDIllnessListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDIllnessListViewController.m; sourceTree = "<group>"; };
+		5D26B3CF7E0D46D89DB40464 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		920CDB251781FF830084DFA4 /* ipad-button-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipad-button-green.png"; sourceTree = "<group>"; };
 		920CDB261781FF830084DFA4 /* ipad-button-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipad-button-green@2x.png"; sourceTree = "<group>"; };
 		920CDB271781FF830084DFA4 /* ipad-button-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipad-button-red.png"; sourceTree = "<group>"; };
@@ -129,6 +145,7 @@
 		92BB88CA178608B600676B00 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		92E8E2CD1786395600C541D6 /* MDSelectGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSelectGroupViewController.h; sourceTree = "<group>"; };
 		92E8E2CE1786395600C541D6 /* MDSelectGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSelectGroupViewController.m; sourceTree = "<group>"; };
+		EE3516D50DF941488BE48DFD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,10 +153,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47699E0217E34A5C00FFC094 /* SenTestingKit.framework in Frameworks */,
 				929A395F17804CCB00B8DC05 /* UIKit.framework in Frameworks */,
 				929A396117804CCB00B8DC05 /* Foundation.framework in Frameworks */,
 				929A396317804CCB00B8DC05 /* CoreGraphics.framework in Frameworks */,
 				929A396517804CCB00B8DC05 /* CoreData.framework in Frameworks */,
+				A50018EDF869476AAE2F127C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +172,21 @@
 				47555086178C5EFC0048ED50 /* MDTreatmentListViewController.m */,
 			);
 			path = TreatmentList;
+			sourceTree = "<group>";
+		};
+		47699D6C17E33D9B00FFC094 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				47699D7617E33DC100FFC094 /* Drug.h */,
+				47699D7717E33DC100FFC094 /* Drug.m */,
+				47699D7317E33DC100FFC094 /* Animal.h */,
+				47699D7417E33DC100FFC094 /* Animal.m */,
+				47699D7017E33DC100FFC094 /* Treatment.h */,
+				47699D7117E33DC100FFC094 /* Treatment.m */,
+				47699D6D17E33DC100FFC094 /* Illness.h */,
+				47699D6E17E33DC100FFC094 /* Illness.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		4799C825178ACAC800A5C5A0 /* Behavior */ = {
@@ -230,6 +264,7 @@
 				929A396617804CCB00B8DC05 /* Farm */,
 				929A395D17804CCB00B8DC05 /* Frameworks */,
 				929A395C17804CCB00B8DC05 /* Products */,
+				5D26B3CF7E0D46D89DB40464 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -244,10 +279,12 @@
 		929A395D17804CCB00B8DC05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				47699E0117E34A5B00FFC094 /* SenTestingKit.framework */,
 				929A395E17804CCB00B8DC05 /* UIKit.framework */,
 				929A396017804CCB00B8DC05 /* Foundation.framework */,
 				929A396217804CCB00B8DC05 /* CoreGraphics.framework */,
 				929A396417804CCB00B8DC05 /* CoreData.framework */,
+				EE3516D50DF941488BE48DFD /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -255,6 +292,7 @@
 		929A396617804CCB00B8DC05 /* Farm */ = {
 			isa = PBXGroup;
 			children = (
+				47699D6C17E33D9B00FFC094 /* Model */,
 				4799C825178ACAC800A5C5A0 /* Behavior */,
 				92BB888D1786007B00676B00 /* EditTreatment */,
 				47555084178C5EA90048ED50 /* TreatmentList */,
@@ -341,9 +379,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 929A398917804CCC00B8DC05 /* Build configuration list for PBXNativeTarget "Farm" */;
 			buildPhases = (
+				E3DA9552A8B04B6E91800639 /* Check Pods Manifest.lock */,
 				929A395717804CCB00B8DC05 /* Sources */,
 				929A395817804CCB00B8DC05 /* Frameworks */,
 				929A395917804CCB00B8DC05 /* Resources */,
+				70BF5FC6FD194C08A12FD06A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -418,6 +458,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		70BF5FC6FD194C08A12FD06A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3DA9552A8B04B6E91800639 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		929A395717804CCB00B8DC05 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -441,6 +514,10 @@
 				4799C830178AF1EA00A5C5A0 /* UIViewController+Decoration.m in Sources */,
 				922179D0178B496E00AEB3C4 /* MDDrugListBihavior.m in Sources */,
 				47555087178C5EFC0048ED50 /* MDTreatmentListViewController.m in Sources */,
+				47699D6F17E33DC100FFC094 /* Illness.m in Sources */,
+				47699D7217E33DC100FFC094 /* Treatment.m in Sources */,
+				47699D7517E33DC100FFC094 /* Animal.m in Sources */,
+				47699D7817E33DC100FFC094 /* Drug.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,7 +595,12 @@
 		};
 		929A398A17804CCC00B8DC05 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D26B3CF7E0D46D89DB40464 /* Pods.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Farm/Farm-Prefix.pch";
 				INFOPLIST_FILE = "Farm/Farm-Info.plist";
@@ -530,7 +612,12 @@
 		};
 		929A398B17804CCC00B8DC05 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D26B3CF7E0D46D89DB40464 /* Pods.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Farm/Farm-Prefix.pch";
 				INFOPLIST_FILE = "Farm/Farm-Info.plist";

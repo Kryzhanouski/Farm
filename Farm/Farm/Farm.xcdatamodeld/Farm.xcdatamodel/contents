@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="11G63b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Animal" syncable="YES">
+    <entity name="Animal" representedClassName="Animal" syncable="YES">
         <attribute name="collar" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateOfBirdth" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="group" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="4" defaultValueString="0" syncable="YES"/>
@@ -9,18 +9,18 @@
         <attribute name="type" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="1" defaultValueString="0" syncable="YES"/>
         <relationship name="treatments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Treatment" inverseName="animal" inverseEntity="Treatment" syncable="YES"/>
     </entity>
-    <entity name="Drug" syncable="YES">
+    <entity name="Drug" representedClassName="Drug" syncable="YES">
         <attribute name="dose" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="drugDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="validTill" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="treatments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Treatment" inverseName="drug" inverseEntity="Treatment" syncable="YES"/>
     </entity>
-    <entity name="Illness" syncable="YES">
+    <entity name="Illness" representedClassName="Illness" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="treatments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Treatment" inverseName="illness" inverseEntity="Treatment" syncable="YES"/>
     </entity>
-    <entity name="Treatment" syncable="YES">
+    <entity name="Treatment" representedClassName="Treatment" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="result" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="animal" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Animal" inverseName="treatments" inverseEntity="Animal" syncable="YES"/>
