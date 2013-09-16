@@ -13,5 +13,5 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 // Actions
-@property (nonatomic, strong) void(^didSelectIllAction)(NSManagedObject* ill);
+@property (nonatomic, strong) void(^didSelectIllAction)(Illness* ill);
 @end

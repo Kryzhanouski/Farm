@@ -179,7 +179,7 @@
 
 - (UINavigationController*)cowListStack {
     if (_cowListStack == nil) {
-        MDCowListViewController* ctr = (MDCowListViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"MDCowListViewController"];
+        MDCowListViewController* ctr = (MDCowListViewController*)[self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([MDCowListViewController class])];
         ctr.managedObjectContext = self.managedObjectContext;
         UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:ctr];
         _cowListStack = nc;
@@ -189,7 +189,7 @@
 
 - (UINavigationController*)calfListStack {
     if (_cowListStack == nil) {
-        MDCowListViewController* ctr = (MDCowListViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"MDCowListViewController"];
+        MDCowListViewController* ctr = (MDCowListViewController*)[self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([MDCowListViewController class])];
         ctr.managedObjectContext = self.managedObjectContext;
         UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:ctr];
         _cowListStack = nc;
@@ -199,7 +199,7 @@
 
 - (UINavigationController*)drugListStack {
     if (_drugListStack == nil) {
-        MDDrugListViewController* ctr = (MDDrugListViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"MDDrugListViewController"];
+        MDDrugListViewController* ctr = (MDDrugListViewController*)[self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([MDDrugListViewController class])];
         MDDrugListBihavior* listBehavior = [[MDDrugListBihavior alloc] init];
         listBehavior.attachedViewController = ctr;
         ctr.managedObjectContext = self.managedObjectContext;
@@ -211,7 +211,7 @@
 
 - (UINavigationController*)treatmentListStack {
     if (_treatmentListStack == nil) {
-        MDIllnessListViewController* ctr = (MDIllnessListViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"MDIllnessListViewController"];
+        MDIllnessListViewController* ctr = (MDIllnessListViewController*)[self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([MDIllnessListViewController class])];
         MDIllnessListBihavior* listBehavior = [[MDIllnessListBihavior alloc] init];
         listBehavior.attachedViewController = ctr;
         ctr.managedObjectContext = self.managedObjectContext;

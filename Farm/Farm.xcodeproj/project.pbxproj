@@ -85,6 +85,7 @@
 		47699D7617E33DC100FFC094 /* Drug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drug.h; sourceTree = "<group>"; };
 		47699D7717E33DC100FFC094 /* Drug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drug.m; sourceTree = "<group>"; };
 		47699E0117E34A5B00FFC094 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		4789730017E744C00042C84C /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		47928F8D17871E4D005251B3 /* MDDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDatePickerViewController.h; sourceTree = "<group>"; };
 		47928F8E17871E4E005251B3 /* MDDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDatePickerViewController.m; sourceTree = "<group>"; };
 		4799C81F178AAC6100A5C5A0 /* MDEditTreatmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDEditTreatmentViewController.h; sourceTree = "<group>"; };
@@ -189,6 +190,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		478972FE17E710790042C84C /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Externals;
+			path = Farm/Externals;
+			sourceTree = "<group>";
+		};
 		4799C825178ACAC800A5C5A0 /* Behavior */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,10 +270,12 @@
 			children = (
 				929A399217805D0E00B8DC05 /* icon@2x.png */,
 				929A399017805D0700B8DC05 /* icon.png */,
+				478972FE17E710790042C84C /* Externals */,
 				929A396617804CCB00B8DC05 /* Farm */,
 				929A395D17804CCB00B8DC05 /* Frameworks */,
 				929A395C17804CCB00B8DC05 /* Products */,
 				5D26B3CF7E0D46D89DB40464 /* Pods.xcconfig */,
+				4789730017E744C00042C84C /* Podfile */,
 			);
 			sourceTree = "<group>";
 		};

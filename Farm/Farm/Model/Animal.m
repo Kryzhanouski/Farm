@@ -20,8 +20,35 @@
 @dynamic type;
 @dynamic treatments;
 
-- (AnimalType)animalType {
+- (AnimalType)animalType
+{
     return (AnimalType)[self.type integerValue];
 }
 
+- (GroupType)groupType
+{
+    return (GroupType)[self.group integerValue];
+}
+
+- (NSString*)groupName
+{
+    NSString* name = nil;
+    switch (self.groupType) {
+        case GroupTypeDeadwood:
+            name = @"Сухостой";
+            break;
+        case GroupTypeLowProductivity:
+            name = @"Низко продуктивная";
+            break;
+        case GroupTypeNormalProductivity:
+            name = @"Средне продуктивная";
+            break;
+        case GroupTypeHighlyProductivity:
+            name = @"Высоко продуктивная";
+            break;
+        default:
+            break;
+    }
+    return name;
+}
 @end

@@ -110,20 +110,20 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Treatment" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([Treatment class]) inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@keypath(Treatment.new, date) ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
     if (self.cowID) {
-        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"animal == %@",self.cowID];
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"%K == %@",@keypath(Treatment.new, animal),self.cowID];
         [fetchRequest setPredicate:predicate];
     }
     
@@ -205,15 +205,16 @@
  */
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    ((UILabel*)[cell viewWithTag:1]).text = [self.dateFormatter stringFromDate:[object valueForKeyPath:@"date"]];
-    ((UILabel*)[cell viewWithTag:2]).text = [object valueForKeyPath:@"illness.name"];
-    ((UILabel*)[cell viewWithTag:3]).text = [object valueForKeyPath:@"drug.name"];
-    ((UILabel*)[cell viewWithTag:4]).text = [object valueForKeyPath:@"result"];
+    Treatment *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    ((UILabel*)[cell viewWithTag:1]).text = [self.dateFormatter stringFromDate:object.date];
+    ((UILabel*)[cell viewWithTag:2]).text = object.illness.name;
+    ((UILabel*)[cell viewWithTag:3]).text = object.drug.name;
+    ((UILabel*)[cell viewWithTag:4]).text = object.result;
 }
 
 - (void)viewDidUnload {
     [self setTableView:nil];
     [super viewDidUnload];
 }
+
 @end

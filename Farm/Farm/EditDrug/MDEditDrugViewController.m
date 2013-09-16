@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *dosaTextField;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 
-@property (nonatomic, strong) NSManagedObject* object;
+@property (nonatomic, strong) Drug* object;
 @end
 
 @implementation MDEditDrugViewController
@@ -40,13 +40,13 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction)];
 
     if (self.objectID != nil) {
-        self.object = [[self childContext] objectWithID:self.objectID];
+        self.object = (Drug*)[[self childContext] objectWithID:self.objectID];
     } else {
-        self.object = [NSEntityDescription insertNewObjectForEntityForName:@"Drug" inManagedObjectContext:[self childContext]];
+        self.object = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Drug class]) inManagedObjectContext:[self childContext]];
     }
-    self.nameTextField.text = [self.object valueForKey:@"name"];
-    self.dosaTextField.text = [NSString stringWithFormat:@"%0.1f",[[self.object valueForKey:@"dose"] floatValue]];
-    self.descriptionTextField.text = [self.object valueForKey:@"drugDescription"];
+    self.nameTextField.text = self.object.name;
+    self.dosaTextField.text = [NSString stringWithFormat:@"%0.1f",[self.object.dose floatValue]];
+    self.descriptionTextField.text = self.object.drugDescription;
     
     [self.nameTextField becomeFirstResponder];
 }
@@ -80,8 +80,8 @@
         isValid = NO;
         errorMessage = @"Лекарство по крайней мере должно иметь имя";
     } else {
-        NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Drug"];
-        [request setPredicate:[NSPredicate predicateWithFormat:@"name == %@",name]];
+        NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([Drug class])];
+        [request setPredicate:[NSPredicate predicateWithFormat:@"%K == %@",@keypath(Drug.new, name), name]];
         NSUInteger count = [[self childContext] countForFetchRequest:request error:nil];
         if (count > 0) {
             isValid = NO;
@@ -95,9 +95,9 @@
     }
     
     if (isValid) {
-        [self.object setValue:name forKey:@"name"];
-        [self.object setValue:@(dosa) forKey:@"dose"];
-        [self.object setValue:description forKey:@"drugDescription"];
+        self.object.name = name;
+        self.object.dose = @(dosa);
+        self.object.drugDescription = description;
         [[self childContext] save:nil];
         [[self managedObjectContext] save:nil];
         [self.navigationController popViewControllerAnimated:YES];

@@ -46,7 +46,7 @@
 
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
-@property (nonatomic, strong) NSManagedObject* object;
+@property (nonatomic, strong) Animal* object;
 @end
 
 @implementation MDEditCowViewController
@@ -79,84 +79,68 @@
     [self.illButton setBackgroundImage:[[UIImage imageNamed:@"ipad-button-green.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(7, 7, 7, 7)] forState:UIControlStateNormal];
 
     if (self.objectID != nil) {
-        self.object = [[self childContext] objectWithID:self.objectID];
+        self.object = (Animal*)[[self childContext] objectWithID:self.objectID];
     } else {
-        self.object = [NSEntityDescription insertNewObjectForEntityForName:@"Animal" inManagedObjectContext:[self childContext]];
+        self.object = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Animal class]) inManagedObjectContext:[self childContext]];
     }
     
     [self refreshData];
 }
 
 - (void)refreshData {
-    NSUInteger animalType = [[self.object valueForKey:@"type"] unsignedIntegerValue];
+    AnimalType animalType = self.object.animalType;
     NSInteger rows = [self.tableView numberOfRowsInSection:0];
     for (int i = 0; i < rows; i++) {
         [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]] setAccessoryType:UITableViewCellAccessoryNone];
     }
     [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:animalType inSection:0]] setAccessoryType:UITableViewCellAccessoryCheckmark];
 
-    self.dateOfBirdthCell.selectionStyle = animalType == 0 ?UITableViewCellSelectionStyleNone:UITableViewCellSelectionStyleGray;
-    self.dateOfBirdthCell.textLabel.enabled = animalType != 0;
-    self.dateOfBirdthCell.detailTextLabel.enabled = animalType != 0;
+    self.dateOfBirdthCell.selectionStyle = animalType == AnimalTypeCow ?UITableViewCellSelectionStyleNone:UITableViewCellSelectionStyleGray;
+    self.dateOfBirdthCell.textLabel.enabled = animalType != AnimalTypeCow;
+    self.dateOfBirdthCell.detailTextLabel.enabled = animalType != AnimalTypeCow;
     
-    self.collarCell.selectionStyle = animalType == 1 ?UITableViewCellSelectionStyleNone:UITableViewCellSelectionStyleGray;
-    self.collarLabel.enabled = animalType == 0;
-    self.collarTextField.enabled = animalType == 0;
+    self.collarCell.selectionStyle = animalType == AnimalTypeCalf ?UITableViewCellSelectionStyleNone:UITableViewCellSelectionStyleGray;
+    self.collarLabel.enabled = animalType == AnimalTypeCow;
+    self.collarTextField.enabled = animalType == AnimalTypeCow;
     
-    NSUInteger group = [[self.object valueForKey:@"group"] unsignedIntegerValue];
-    NSString* groupName = nil;
-    switch (group) {
-        case 0:
-            groupName = @"Сухостой";
-            break;
-        case 1:
-            groupName = @"Низко продуктивная";
-            break;
-        case 2:
-            groupName = @"Средне продуктивная";
-            break;
-        case 3:
-            groupName = @"Высоко продуктивная";
-            break;
-        default:
-            break;
-    }
+    NSString* groupName = self.object.groupName;
     self.groupCell.detailTextLabel.text = groupName;
-    self.groupCell.selectionStyle = animalType == 1 ?UITableViewCellSelectionStyleNone:UITableViewCellSelectionStyleGray;
-    self.groupCell.textLabel.enabled = animalType == 0;
-    self.groupCell.detailTextLabel.enabled = animalType == 0;
+    self.groupCell.selectionStyle = animalType == AnimalTypeCalf ?UITableViewCellSelectionStyleNone:UITableViewCellSelectionStyleGray;
+    self.groupCell.textLabel.enabled = animalType == AnimalTypeCow;
+    self.groupCell.detailTextLabel.enabled = animalType == AnimalTypeCow;
     
-    self.tagTextField.text = [NSString stringWithFormat:@"%d",[[self.object valueForKey:@"tag"] unsignedIntegerValue]];
-    self.collarTextField.text = [self.object valueForKey:@"collar"];
+    self.tagTextField.text = [NSString stringWithFormat:@"%d", [self.object.tag unsignedIntegerValue]];
+    self.collarTextField.text = self.object.collar;
     
     NSString* dateOfBirdthString = @"";
-    NSDate* dateOfBirdthDate = [self.object valueForKey:@"dateOfBirdth"];
+    NSDate* dateOfBirdthDate = self.object.dateOfBirdth;
     if (dateOfBirdthDate) {
         dateOfBirdthString = [dateOfBirdthString stringByAppendingFormat:@" %@",[self.dateFormatter stringFromDate:dateOfBirdthDate]];
     }
     self.dateOfBirdthCell.detailTextLabel.text = dateOfBirdthString;
     
-    self.illButton.selected = [[self.object valueForKey:@"isIll"] boolValue];
+    self.illButton.selected = [self.object.isIll boolValue];
     
-    NSSet* treatments = [self.object valueForKey:@"treatments"];
-    NSArray* orderedTreatments = [treatments sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]];
+    NSSet* treatments = self.object.treatments;
+    NSString* dateKeypath = @keypath(Treatment.new, date);
+    NSArray* orderedTreatments = [treatments sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:dateKeypath ascending:NO]]];
     if ([orderedTreatments count] > 0) {
-        self.treatment1Date.text = [self.dateFormatter stringFromDate:[orderedTreatments[0] valueForKeyPath:@"date"]];
-        self.treatment1Ill.text = [orderedTreatments[0] valueForKeyPath:@"illness.name"];
-        self.treatment1Drug.text = [orderedTreatments[0] valueForKeyPath:@"drug.name"];
-        self.treatment1Result.text = [orderedTreatments[0] valueForKeyPath:@"result"];
+        self.treatment1Date.text = [self.dateFormatter stringFromDate:[orderedTreatments[0] valueForKeyPath:dateKeypath]];
+        self.treatment1Ill.text = [orderedTreatments[0] valueForKeyPath:@keypath(Treatment.new, illness.name)];
+        self.treatment1Drug.text = [orderedTreatments[0] valueForKeyPath:@keypath(Treatment.new, drug.name)];
+        self.treatment1Result.text = [orderedTreatments[0] valueForKeyPath:@keypath(Treatment.new, result)];
     }
     if ([orderedTreatments count] > 1) {
-        self.treatment2Date.text = [self.dateFormatter stringFromDate:[orderedTreatments[1] valueForKeyPath:@"date"]];
-        self.treatment2Ill.text = [orderedTreatments[1] valueForKeyPath:@"illness.name"];
-        self.treatment2Drug.text = [orderedTreatments[1] valueForKeyPath:@"drug.name"];
-        self.treatment2Result.text = [orderedTreatments[1] valueForKeyPath:@"result"];
+        self.treatment2Date.text = [self.dateFormatter stringFromDate:[orderedTreatments[1] valueForKeyPath:dateKeypath]];
+        self.treatment2Ill.text = [orderedTreatments[1] valueForKeyPath:@keypath(Treatment.new, illness.name)];
+        self.treatment2Drug.text = [orderedTreatments[1] valueForKeyPath:@keypath(Treatment.new, drug.name)];
+        self.treatment2Result.text = [orderedTreatments[1] valueForKeyPath:@keypath(Treatment.new, result)];
     }
     if ([orderedTreatments count] > 2) {
-        self.treatment3Date.text = [self.dateFormatter stringFromDate:[orderedTreatments[2] valueForKeyPath:@"date"]];
-        self.treatment3Ill.text = [orderedTreatments[2] valueForKeyPath:@"illness.name"];
-        self.treatment3Drug.text = [orderedTreatments[2] valueForKeyPath:@"drug.name"];
-        self.treatment3Result.text = [orderedTreatments[2] valueForKeyPath:@"result"];
+        self.treatment3Date.text = [self.dateFormatter stringFromDate:[orderedTreatments[2] valueForKeyPath:dateKeypath]];
+        self.treatment3Ill.text = [orderedTreatments[2] valueForKeyPath:@keypath(Treatment.new, illness.name)];
+        self.treatment3Drug.text = [orderedTreatments[2] valueForKeyPath:@keypath(Treatment.new, drug.name)];
+        self.treatment3Result.text = [orderedTreatments[2] valueForKeyPath:@keypath(Treatment.new, result)];
     }
 
     [self.tableView reloadData];
@@ -164,20 +148,20 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     __weak MDEditCowViewController* weakSelf = self;
-    NSManagedObject* object = self.object;
+    Animal* object = self.object;
     if ([segue.destinationViewController isKindOfClass:[MDSelectGroupViewController class]]) {
-        NSUInteger group = [[self.object valueForKey:@"group"] unsignedIntegerValue];
+        GroupType group = self.object.groupType;
         [(MDSelectGroupViewController*)segue.destinationViewController setSelectedIndex:group];
         [(MDSelectGroupViewController*)segue.destinationViewController setDidSelectGroupAction:^(NSUInteger groupIndex) {
-            [object setValue:@(groupIndex) forKey:@"group"];
+            object.group = @(groupIndex);
             [weakSelf refreshData];
         }];
     }
     if ([segue.destinationViewController isKindOfClass:[MDDatePickerViewController class]]) {
-        NSDate* dateOfBirdthDate = [self.object valueForKey:@"dateOfBirdth"];
+        NSDate* dateOfBirdthDate = self.object.dateOfBirdth;
         [(MDDatePickerViewController*)segue.destinationViewController setCurrentDate:dateOfBirdthDate];
         [(MDDatePickerViewController*)segue.destinationViewController setDidSelectDateAction:^(NSDate * date) {
-            [object setValue:date forKey:@"dateOfBirdth"];
+            object.dateOfBirdth = date;
             [weakSelf refreshData];
         }];
     }
@@ -233,18 +217,18 @@
     NSString* collar = self.collarTextField.text;
     NSString* tagString = self.tagTextField.text;
     float tag = [tagString floatValue];
-    NSUInteger type = [[self.object valueForKey:@"type"] unsignedIntegerValue];
+    AnimalType type = self.object.animalType;
     BOOL isIll = self.illButton.selected;
     
     if ((collar == nil || [collar isEqualToString:@""]) && type == 0) {
         isValid = NO;
         errorMessage = @"Введите номер ошейника";
     } else if (type == 0) {
-        NSDictionary* commitedValues = [self.object committedValuesForKeys:@[@"collar"]];
-        NSString* oldValue = [commitedValues valueForKey:@"collar"];
+        NSDictionary* commitedValues = [self.object committedValuesForKeys:@[@keypath(Animal.new, collar)]];
+        NSString* oldValue = [commitedValues valueForKey:@keypath(Animal.new, collar)];
         if (oldValue == nil || ![oldValue isEqualToString:collar]) {
-            NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Animal"];
-            [request setPredicate:[NSPredicate predicateWithFormat:@"collar == %@",collar]];
+            NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([Animal class])];
+            [request setPredicate:[NSPredicate predicateWithFormat:@"%K == %@",@keypath(Animal.new, collar),collar]];
             NSUInteger count = [[self childContext] countForFetchRequest:request error:nil];
             if (count > 0) {
                 isValid = NO;
@@ -264,10 +248,10 @@
     }
     
     if (isValid) {
-        [self.object setValue:collar forKey:@"collar"];
-        [self.object setValue:@(tag) forKey:@"tag"];
-        [self.object setValue:@(type) forKey:@"type"];
-        [self.object setValue:@(isIll) forKey:@"isIll"];
+        self.object.collar = collar;
+        self.object.tag = @(tag);
+        self.object.type = @(type);
+        self.object.isIll = @(isIll);
         
         [[self childContext] save:nil];
         [[self managedObjectContext] save:nil];
@@ -328,11 +312,11 @@
     }
     if (textField == self.tagTextField) {
         float tag = [self.tagTextField.text floatValue];
-        [self.object setValue:@(tag) forKey:@"tag"];
+        self.object.tag = @(tag);
     }
     if (textField == self.collarTextField) {
         NSString* collar = self.collarTextField.text;
-        [self.object setValue:collar forKey:@"collar"];
+        self.object.collar = collar;
     }
 }
 
@@ -357,11 +341,11 @@
 #pragma mark - Table view delegate
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSUInteger animalType = [[self.object valueForKey:@"type"] unsignedIntegerValue];
-    if ([tableView cellForRowAtIndexPath:indexPath] == self.dateOfBirdthCell && animalType == 0) {
+    AnimalType animalType = self.object.animalType;
+    if ([tableView cellForRowAtIndexPath:indexPath] == self.dateOfBirdthCell && animalType == AnimalTypeCow) {
         return nil;
     }
-    if ([tableView cellForRowAtIndexPath:indexPath] == self.groupCell && animalType == 1) {
+    if ([tableView cellForRowAtIndexPath:indexPath] == self.groupCell && animalType == AnimalTypeCalf) {
         return nil;
     }
     return indexPath;
@@ -374,7 +358,7 @@
             [[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:indexPath.section]] setAccessoryType:UITableViewCellAccessoryNone];
         }
         [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
-        [self.object setValue:@(indexPath.row) forKey:@"type"];
+        self.object.type = @(indexPath.row);
         [self refreshData];
     }
     if ([tableView cellForRowAtIndexPath:indexPath] == self.illCell) {

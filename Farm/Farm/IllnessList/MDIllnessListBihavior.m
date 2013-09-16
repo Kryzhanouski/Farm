@@ -31,7 +31,7 @@
 }
 
 - (void)editTreatment:(NSManagedObject*)object {
-    MDEditIllnessViewController* ctr = [[self illnessController].storyboard instantiateViewControllerWithIdentifier:@"MDEditIllnessViewController"];
+    MDEditIllnessViewController* ctr = [[self illnessController].storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([MDEditIllnessViewController class])];
     [ctr setManagedObjectContext:[self illnessController].managedObjectContext];
     [ctr setObjectID:[object objectID]];
     [[self illnessController].navigationController pushViewController:ctr animated:YES];

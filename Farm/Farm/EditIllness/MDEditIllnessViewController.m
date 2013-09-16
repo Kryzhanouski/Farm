@@ -12,7 +12,7 @@
 @property (nonatomic, strong) NSManagedObjectContext* childContext;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
-@property (nonatomic, strong) NSManagedObject* object;
+@property (nonatomic, strong) Illness* object;
 @end
 
 @implementation MDEditIllnessViewController
@@ -36,11 +36,11 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction)];
     
     if (self.objectID != nil) {
-        self.object = [[self childContext] objectWithID:self.objectID];
+        self.object = (Illness*)[[self childContext] objectWithID:self.objectID];
     } else {
-        self.object = [NSEntityDescription insertNewObjectForEntityForName:@"Illness" inManagedObjectContext:[self childContext]];
+        self.object = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Illness class]) inManagedObjectContext:[self childContext]];
     }
-    self.nameTextField.text = [self.object valueForKey:@"name"];
+    self.nameTextField.text = self.object.name;
     
     [self.nameTextField becomeFirstResponder];
 }
@@ -72,8 +72,8 @@
         isValid = NO;
         errorMessage = @"Болезнь по крайней мере должно иметь имя";
     } else {
-        NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Illness"];
-        [request setPredicate:[NSPredicate predicateWithFormat:@"name == %@",name]];
+        NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([Illness class])];
+        [request setPredicate:[NSPredicate predicateWithFormat:@"%K == %@",@keypath(Illness.new, name), name]];
         NSUInteger count = [[self childContext] countForFetchRequest:request error:nil];
         if (count > 0) {
             isValid = NO;
@@ -87,7 +87,7 @@
     }
     
     if (isValid) {
-        [self.object setValue:name forKey:@"name"];
+        self.object.name = name;
         [[self childContext] save:nil];
         [[self managedObjectContext] save:nil];
         [self.navigationController popViewControllerAnimated:YES];

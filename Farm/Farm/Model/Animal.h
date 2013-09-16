@@ -16,6 +16,12 @@ typedef NS_ENUM(NSInteger, AnimalType) {
     AnimalTypeCalf  = 1,
 };
 
+typedef NS_ENUM(NSInteger, GroupType) {
+    GroupTypeDeadwood           = 0,
+    GroupTypeLowProductivity    = 1,
+    GroupTypeNormalProductivity = 2,
+    GroupTypeHighlyProductivity = 3,
+};
 
 @interface Animal : NSManagedObject
 
@@ -28,6 +34,8 @@ typedef NS_ENUM(NSInteger, AnimalType) {
 @property (nonatomic, retain) NSSet *treatments;
 
 @property (nonatomic, readonly) AnimalType animalType;
+@property (nonatomic, readonly) GroupType groupType;
+@property (nonatomic, readonly) NSString* groupName;
 @end
 
 @interface Animal (CoreDataGeneratedAccessors)

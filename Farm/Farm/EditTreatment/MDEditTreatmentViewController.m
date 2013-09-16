@@ -10,7 +10,6 @@
 #import "MDIllnessListViewController.h"
 #import "MDDrugListViewController.h"
 #import "MDDatePickerViewController.h"
-#import <EXTKeyPathCoding.h>
 
 @interface MDEditTreatmentViewController ()
 @property (nonatomic, strong) NSManagedObjectContext* childContext;
@@ -123,28 +122,28 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     MDEditTreatmentViewController* __weak weakSelf = self;
-    NSManagedObject* object = self.object;
+    Treatment* object = self.object;
     if ([segue.destinationViewController isKindOfClass:[MDIllnessListViewController class]]) {
         [(MDIllnessListViewController*)segue.destinationViewController setManagedObjectContext:[self childContext]];
-        [(MDIllnessListViewController*)segue.destinationViewController setDidSelectIllAction:^(NSManagedObject * ill) {
-            [object setValue:ill forKey:@"illness"];
+        [(MDIllnessListViewController*)segue.destinationViewController setDidSelectIllAction:^(Illness * ill) {
+            object.illness = ill;
             [weakSelf refreshData];
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }];
     }
     if ([segue.destinationViewController isKindOfClass:[MDDrugListViewController class]]) {
         [(MDDrugListViewController*)segue.destinationViewController setManagedObjectContext:[self childContext]];
-        [(MDDrugListViewController*)segue.destinationViewController setDidSelectDrugAction:^(NSManagedObject * drug) {
-            [object setValue:drug forKey:@"drug"];
+        [(MDDrugListViewController*)segue.destinationViewController setDidSelectDrugAction:^(Drug * drug) {
+            object.drug = drug;
             [weakSelf refreshData];
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }];
     }
     if ([segue.destinationViewController isKindOfClass:[MDDatePickerViewController class]]) {
-        NSDate* date = [self.object valueForKey:@"date"];
+        NSDate* date = self.object.date;
         [(MDDatePickerViewController*)segue.destinationViewController setCurrentDate:date];
         [(MDDatePickerViewController*)segue.destinationViewController setDidSelectDateAction:^(NSDate * date) {
-            [object setValue:date forKey:@"date"];
+            object.date = date;
             [weakSelf refreshData];
         }];
     }

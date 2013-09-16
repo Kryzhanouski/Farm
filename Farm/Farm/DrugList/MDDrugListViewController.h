@@ -13,6 +13,6 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 // Actions
-@property (nonatomic, strong) void(^didSelectDrugAction)(NSManagedObject* drug);
+@property (nonatomic, strong) void(^didSelectDrugAction)(Drug* drug);
 
 @end

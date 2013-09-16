@@ -75,10 +75,10 @@
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSUInteger animalType = [[object valueForKey:@"type"] unsignedIntegerValue];
+    Animal *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    AnimalType animalType = object.animalType;
 
-    NSString* identifier = animalType == 0 ? @"CowCell": @"CalfCell";
+    NSString* identifier = animalType == AnimalTypeCow ? @"CowCell": @"CalfCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
 
     [self configureCell:cell atIndexPath:indexPath];
@@ -125,14 +125,14 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Animal" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([Animal class]) inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"collar" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@keypath(Animal.new, collar) ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -216,14 +216,14 @@
  */
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSUInteger animalType = [[object valueForKey:@"type"] unsignedIntegerValue];
+    Animal *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    AnimalType animalType = object.animalType;
     
-    ((UILabel*)[cell viewWithTag:1]).text = [NSString stringWithFormat:@"%d",[[object valueForKey:@"tag"] unsignedIntegerValue]];
+    ((UILabel*)[cell viewWithTag:1]).text = [NSString stringWithFormat:@"%d",[object.tag unsignedIntegerValue]];
     if (animalType == 0) {
-        ((UILabel*)[cell viewWithTag:2]).text = [object valueForKey:@"collar"];
+        ((UILabel*)[cell viewWithTag:2]).text = object.collar;
     } else {
-        NSDate* dateOfBirdthDate = [object valueForKey:@"dateOfBirdth"];
+        NSDate* dateOfBirdthDate = object.dateOfBirdth;
         NSMutableString* ageString = [NSMutableString stringWithString:@"-"];
         if (dateOfBirdthDate) {
             NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -274,30 +274,13 @@
         ((UILabel*)[cell viewWithTag:2]).text = ageString;
     }
     
-    if (animalType == 0) {
-        NSUInteger group = [[object valueForKey:@"group"] unsignedIntegerValue];
-        NSString* groupName = nil;
-        switch (group) {
-            case 0:
-                groupName = @"Сухостой";
-                break;
-            case 1:
-                groupName = @"Низко продуктивная";
-                break;
-            case 2:
-                groupName = @"Средне продуктивная";
-                break;
-            case 3:
-                groupName = @"Высоко продуктивная";
-                break;
-            default:
-                break;
-        }
+    if (animalType == AnimalTypeCow) {
+        NSString* groupName = object.groupName;
         ((UILabel*)[cell viewWithTag:3]).text = groupName;
     }
     
     
-    BOOL isIll = [[object valueForKey:@"isIll"] boolValue];
+    BOOL isIll = [object.isIll boolValue];
     ((UILabel*)[cell viewWithTag:4]).text = isIll ? @"Больная": @"Не Больная";
     UIView* bkgView = [[UIView alloc] init];
     bkgView.backgroundColor = isIll ? [UIColor redColor]: [UIColor whiteColor];
@@ -316,13 +299,13 @@
     if ([searchText length] > 0) {
         switch (searchBar.selectedScopeButtonIndex) {
             case 0:
-                predicate = [NSPredicate predicateWithFormat:@"collar contains[cd] %@",searchText];
+                predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@",@keypath(Animal.new, collar),searchText];
                 break;
             case 1:
-                predicate = [NSPredicate predicateWithFormat:@"tag contains[cd] %@",searchText];
+                predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@",@keypath(Animal.new, tag),searchText];
                 break;
             case 2:
-                predicate = [NSPredicate predicateWithFormat:@"tag contains[cd] %@",searchText];
+                predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@",@keypath(Animal.new, tag),searchText];
                 break;
             default:
                 break;
@@ -332,6 +315,7 @@
     _fetchedResultsController = nil;
     [self.tableView reloadData];
 }
+
 //- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text NS_AVAILABLE_IOS(3_0); // called before text changes
 //
 //- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;                     // called when keyboard search button pressed
@@ -339,6 +323,7 @@
 //- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar;                    // called when cancel button pressed
 //- (void)searchBarResultsListButtonClicked:(UISearchBar *)searchBar NS_AVAILABLE_IOS(3_2); // called when search results button pressed
 //
+
 - (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
 }
 
