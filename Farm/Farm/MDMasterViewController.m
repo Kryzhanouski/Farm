@@ -16,6 +16,9 @@
 
 @interface MDMasterViewController ()
 @property (nonatomic, strong) UINavigationController* cowListStack;
+@property (nonatomic, strong) UINavigationController* calfListStack;
+@property (nonatomic, strong) UINavigationController* sickCowListStack;
+@property (nonatomic, strong) UINavigationController* sickCalfListStack;
 @property (nonatomic, strong) UINavigationController* drugListStack;
 @property (nonatomic, strong) UINavigationController* treatmentListStack;
 @property (nonatomic, strong) UINavigationController* currentStack;
@@ -158,9 +161,9 @@
             break;
         case 1:
             if (indexPath.row == 0) {
-                nextStack = [self cowListStack];
+                nextStack = [self sickCowListStack];
             } else if (indexPath.row == 1) {
-                nextStack = [self calfListStack];
+                nextStack = [self sickCalfListStack];
             }
             break;
         case 2:
@@ -181,20 +184,44 @@
     if (_cowListStack == nil) {
         MDCowListViewController* ctr = (MDCowListViewController*)[self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([MDCowListViewController class])];
         ctr.managedObjectContext = self.managedObjectContext;
+        ctr.filterPredicale = [NSPredicate predicateWithFormat:@"%K == %d",@keypath(Animal.new,type),AnimalTypeCow];
         UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:ctr];
         _cowListStack = nc;
     }
     return _cowListStack;
 }
 
-- (UINavigationController*)calfListStack {
-    if (_cowListStack == nil) {
+- (UINavigationController*)sickCowListStack {
+    if (_sickCowListStack == nil) {
         MDCowListViewController* ctr = (MDCowListViewController*)[self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([MDCowListViewController class])];
         ctr.managedObjectContext = self.managedObjectContext;
+        ctr.filterPredicale = [NSPredicate predicateWithFormat:@"%K == %d && %K == YES",@keypath(Animal.new,type),AnimalTypeCow,@keypath(Animal.new,isIll)];
         UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:ctr];
-        _cowListStack = nc;
+        _sickCowListStack = nc;
     }
-    return _cowListStack;
+    return _sickCowListStack;
+}
+
+- (UINavigationController*)calfListStack {
+    if (_calfListStack == nil) {
+        MDCowListViewController* ctr = (MDCowListViewController*)[self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([MDCowListViewController class])];
+        ctr.managedObjectContext = self.managedObjectContext;
+        ctr.filterPredicale = [NSPredicate predicateWithFormat:@"%K == %d",@keypath(Animal.new,type),AnimalTypeCalf];
+        UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:ctr];
+        _calfListStack = nc;
+    }
+    return _calfListStack;
+}
+
+- (UINavigationController*)sickCalfListStack {
+    if (_sickCalfListStack == nil) {
+        MDCowListViewController* ctr = (MDCowListViewController*)[self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([MDCowListViewController class])];
+        ctr.managedObjectContext = self.managedObjectContext;
+        ctr.filterPredicale = [NSPredicate predicateWithFormat:@"%K == %d && %K == YES",@keypath(Animal.new,type),AnimalTypeCalf,@keypath(Animal.new,isIll)];
+        UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:ctr];
+        _sickCalfListStack = nc;
+    }
+    return _sickCalfListStack;
 }
 
 - (UINavigationController*)drugListStack {

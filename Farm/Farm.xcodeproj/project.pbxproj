@@ -21,7 +21,6 @@
 		47699D7217E33DC100FFC094 /* Treatment.m in Sources */ = {isa = PBXBuildFile; fileRef = 47699D7117E33DC100FFC094 /* Treatment.m */; };
 		47699D7517E33DC100FFC094 /* Animal.m in Sources */ = {isa = PBXBuildFile; fileRef = 47699D7417E33DC100FFC094 /* Animal.m */; };
 		47699D7817E33DC100FFC094 /* Drug.m in Sources */ = {isa = PBXBuildFile; fileRef = 47699D7717E33DC100FFC094 /* Drug.m */; };
-		47699E0217E34A5C00FFC094 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47699E0117E34A5B00FFC094 /* SenTestingKit.framework */; };
 		47928F8F17871E4E005251B3 /* MDDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47928F8E17871E4E005251B3 /* MDDatePickerViewController.m */; };
 		4799C821178AAC6100A5C5A0 /* MDEditTreatmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4799C820178AAC6100A5C5A0 /* MDEditTreatmentViewController.m */; };
 		4799C829178ACB6B00A5C5A0 /* MDDetailBehaviorSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = 4799C828178ACB6B00A5C5A0 /* MDDetailBehaviorSimple.m */; };
@@ -154,7 +153,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47699E0217E34A5C00FFC094 /* SenTestingKit.framework in Frameworks */,
 				929A395F17804CCB00B8DC05 /* UIKit.framework in Frameworks */,
 				929A396117804CCB00B8DC05 /* Foundation.framework in Frameworks */,
 				929A396317804CCB00B8DC05 /* CoreGraphics.framework in Frameworks */,

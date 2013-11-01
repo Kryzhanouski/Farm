@@ -136,8 +136,15 @@
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSPredicate* predicate = self.searchPredicate;
+    if (predicate && self.filterPredicale) {
+        predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[predicate,self.filterPredicale]];
+    } else if (self.filterPredicale){
+        predicate = self.filterPredicale;
+    }
 
-    [fetchRequest setPredicate:self.searchPredicate];
+    [fetchRequest setPredicate:predicate];
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
