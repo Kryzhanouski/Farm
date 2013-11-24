@@ -53,8 +53,12 @@
     [ctr setObjectID:[sender objectID]];
 }
 
-- (void)editCow:(NSManagedObject*)object {
-    [self performSegueWithIdentifier:@"MDEditCowViewController" sender:object];
+- (void)editCow:(Animal*)object {
+    if (self.animalType == AnimalTypeCow) {
+        [self performSegueWithIdentifier:@"MDEditCowViewController" sender:object];
+    } else {
+        [self performSegueWithIdentifier:@"MDEditCalfViewController" sender:object];
+    }
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -112,7 +116,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    Animal *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     [self editCow:object];
 }
 

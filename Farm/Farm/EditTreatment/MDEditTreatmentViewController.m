@@ -16,6 +16,7 @@
 @property (nonatomic, strong) Treatment* object;
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *treatmentDateCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *treatmentEndDateCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *illnessCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *drugCell;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
@@ -55,8 +56,11 @@
         self.object = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Treatment class]) inManagedObjectContext:[self childContext]];
     }
 
-    if (self.object.date == nil) {
-        self.object.date = [NSDate date];
+    if (self.object.startDate == nil) {
+        self.object.startDate = [NSDate date];
+    }
+    if (self.object.endDate == nil) {
+        self.object.endDate = [NSDate date];
     }
     
     [self refreshData];
@@ -73,11 +77,17 @@
 
 - (void)refreshData {
     NSString* dateString = @"";
-    NSDate* date = self.object.date;
+    NSDate* date = self.object.startDate;
     if (date) {
         dateString = [dateString stringByAppendingFormat:@" %@",[self.dateFormatter stringFromDate:date]];
     }
+    NSString* endDateString = @"";
+    NSDate* endDate = self.object.endDate;
+    if (endDate) {
+        endDateString = [endDateString stringByAppendingFormat:@" %@",[self.dateFormatter stringFromDate:endDate]];
+    }
     self.treatmentDateCell.detailTextLabel.text = dateString;
+    self.treatmentEndDateCell.detailTextLabel.text = endDateString;
     self.illnessCell.detailTextLabel.text = self.object.illness.name;
     self.drugCell.detailTextLabel.text = self.object.drug.name;
     self.descriptionTextView.text = self.object.result;
@@ -105,12 +115,14 @@
         Animal* cow = (Animal*)[[self childContext] objectWithID:self.cowID];
         NSMutableSet* treatments = [cow mutableSetValueForKey:@keypath(Animal.new, treatments)];
         [treatments addObject:self.object];
+        [self scheduleNotificationWithItem:self.object interval:1];
         [[self childContext] save:nil];
         [self.navigationController popViewControllerAnimated:YES];
         if (self.didAddTreatment) {
             self.didAddTreatment();
         }
     }
+    
 }
 
 - (IBAction)cancelAction:(id)sender {
@@ -118,6 +130,55 @@
     if (self.didCancelAddTreatment) {
         self.didCancelAddTreatment();
     }
+}
+
+- (void)scheduleNotificationWithItem:(Treatment *)item interval:(int)minutesBefore {
+    NSDate* startDate = item.startDate;
+//    NSDate* endDate = item.endDate;
+    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSDateComponents *dateComps = [calendar components:NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay
+fromDate:startDate];
+    [dateComps setHour:6];
+    [dateComps setMinute:0];
+    NSDate *itemDate = [calendar dateFromComponents:dateComps];
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    if (localNotif == nil)
+        return;
+    localNotif.fireDate = itemDate;
+    localNotif.timeZone = [NSTimeZone defaultTimeZone];
+    localNotif.repeatInterval = NSCalendarUnitDay;
+
+    localNotif.alertBody = [NSString stringWithFormat:@"Ошейник: %@, болезнь: %@.", item.animal.collar,item.illness.name];
+    localNotif.alertAction = NSLocalizedString(@"View Details", nil);
+    
+    localNotif.soundName = UILocalNotificationDefaultSoundName;
+    localNotif.applicationIconBadgeNumber = 1;
+    
+    NSDictionary *infoDict = [NSDictionary dictionaryWithObject:[[[item objectID] URIRepresentation] absoluteString] forKey:@"URIRepresentation"];
+    localNotif.userInfo = infoDict;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+
+
+    [dateComps setHour:17];
+    [dateComps setMinute:0];
+    itemDate = [calendar dateFromComponents:dateComps];
+    localNotif = [[UILocalNotification alloc] init];
+    if (localNotif == nil)
+        return;
+    localNotif.fireDate = itemDate;
+    localNotif.timeZone = [NSTimeZone defaultTimeZone];
+    localNotif.repeatInterval = NSCalendarUnitDay;
+
+    localNotif.alertBody = [NSString stringWithFormat:@"Ошейник: %@, болезнь: %@.", item.animal.collar,item.illness.name];
+    localNotif.alertAction = NSLocalizedString(@"View Details", nil);
+    
+    localNotif.soundName = UILocalNotificationDefaultSoundName;
+    localNotif.applicationIconBadgeNumber = 1;
+    
+    localNotif.userInfo = infoDict;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -140,10 +201,17 @@
         }];
     }
     if ([segue.destinationViewController isKindOfClass:[MDDatePickerViewController class]]) {
-        NSDate* date = self.object.date;
+        UITableViewCell* selectedCell = [self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]];
+        NSString* keyPath = nil;
+        if (selectedCell == self.treatmentDateCell) {
+            keyPath = @keypath(self.object,startDate);
+        } else {
+            keyPath = @keypath(self.object,endDate);
+        }
+        NSDate* date = [self.object valueForKey:keyPath];
         [(MDDatePickerViewController*)segue.destinationViewController setCurrentDate:date];
         [(MDDatePickerViewController*)segue.destinationViewController setDidSelectDateAction:^(NSDate * date) {
-            object.date = date;
+            [object setValue:date forKey:keyPath];
             [weakSelf refreshData];
         }];
     }

@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface MDCowListViewController : UIViewController
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSPredicate* filterPredicale;
+
+@property (nonatomic, assign) AnimalType animalType;
 
 @end

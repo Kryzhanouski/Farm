@@ -117,7 +117,7 @@
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@keypath(Treatment.new, date) ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@keypath(Treatment.new, startDate) ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -206,7 +206,7 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Treatment *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    ((UILabel*)[cell viewWithTag:1]).text = [self.dateFormatter stringFromDate:object.date];
+    ((UILabel*)[cell viewWithTag:1]).text = [self.dateFormatter stringFromDate:object.startDate];
     ((UILabel*)[cell viewWithTag:2]).text = object.illness.name;
     ((UILabel*)[cell viewWithTag:3]).text = object.drug.name;
     ((UILabel*)[cell viewWithTag:4]).text = object.result;

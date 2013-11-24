@@ -2,18 +2,21 @@
 //  Treatment.m
 //  Farm
 //
-//  Created by Mark Kryzhanouski on 9/13/13.
+//  Created by Mark on 11/24/13.
 //  Copyright (c) 2013 Mark Kryzhanouski. All rights reserved.
 //
 
 #import "Treatment.h"
+#import "Animal.h"
+#import "Drug.h"
 #import "Illness.h"
 
 
 @implementation Treatment
 
-@dynamic date;
+@dynamic startDate;
 @dynamic result;
+@dynamic endDate;
 @dynamic animal;
 @dynamic drug;
 @dynamic illness;

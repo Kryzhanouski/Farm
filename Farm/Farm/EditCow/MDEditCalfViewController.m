@@ -1,12 +1,12 @@
 //
-//  MDEditCowViewController.m
+//  MDEditCalfViewController.m
 //  Farm
 //
-//  Created by Mark Kryzhanouski on 7/1/13.
+//  Created by Mark on 11/24/13.
 //  Copyright (c) 2013 Mark Kryzhanouski. All rights reserved.
 //
 
-#import "MDEditCowViewController.h"
+#import "MDEditCalfViewController.h"
 #import "MDSelectGroupViewController.h"
 #import "MDDatePickerViewController.h"
 #import "MDEditTreatmentViewController.h"
@@ -15,18 +15,14 @@
 #define kPickerAnimationDuration 0.40
 
 
-@interface MDEditCowViewController ()<UITextFieldDelegate>
+@interface MDEditCalfViewController ()<UITextFieldDelegate>
 @property (nonatomic, strong) NSManagedObjectContext* childContext;
-@property (weak, nonatomic) IBOutlet UITextField *collarTextField;
-@property (weak, nonatomic) IBOutlet UILabel *collarLabel;
 @property (weak, nonatomic) IBOutlet UITextField *tagTextField;
 @property (weak, nonatomic) IBOutlet UIButton *illButton;
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *illCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *groupCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *dateOfBirdthCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *tagCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *collarCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *treatmentCell1;
 @property (weak, nonatomic) IBOutlet UITableViewCell *treatmentCell2;
 @property (weak, nonatomic) IBOutlet UITableViewCell *treatmentCell3;
@@ -49,7 +45,7 @@
 @property (nonatomic, strong) Animal* object;
 @end
 
-@implementation MDEditCowViewController
+@implementation MDEditCalfViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -61,7 +57,6 @@
 
 - (void)dealloc {
     [_childContext reset];
-    self.collarTextField.delegate = nil;
     self.tagTextField.delegate = nil;
 }
 
@@ -77,11 +72,12 @@
     
     [self.illButton setBackgroundImage:[[UIImage imageNamed:@"ipad-button-red.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(7, 7, 7, 7)] forState:UIControlStateSelected];
     [self.illButton setBackgroundImage:[[UIImage imageNamed:@"ipad-button-green.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(7, 7, 7, 7)] forState:UIControlStateNormal];
-
+    
     if (self.objectID != nil) {
         self.object = (Animal*)[[self childContext] objectWithID:self.objectID];
     } else {
         self.object = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Animal class]) inManagedObjectContext:[self childContext]];
+        self.object.type = @(AnimalTypeCalf);
     }
     
     [self refreshData];
@@ -94,23 +90,12 @@
         [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]] setAccessoryType:UITableViewCellAccessoryNone];
     }
     [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:animalType inSection:0]] setAccessoryType:UITableViewCellAccessoryCheckmark];
-
+    
     self.dateOfBirdthCell.selectionStyle = animalType == AnimalTypeCow ?UITableViewCellSelectionStyleNone:UITableViewCellSelectionStyleGray;
     self.dateOfBirdthCell.textLabel.enabled = animalType != AnimalTypeCow;
     self.dateOfBirdthCell.detailTextLabel.enabled = animalType != AnimalTypeCow;
     
-    self.collarCell.selectionStyle = animalType == AnimalTypeCalf ?UITableViewCellSelectionStyleNone:UITableViewCellSelectionStyleGray;
-    self.collarLabel.enabled = animalType == AnimalTypeCow;
-    self.collarTextField.enabled = animalType == AnimalTypeCow;
-    
-    NSString* groupName = self.object.groupName;
-    self.groupCell.detailTextLabel.text = groupName;
-    self.groupCell.selectionStyle = animalType == AnimalTypeCalf ?UITableViewCellSelectionStyleNone:UITableViewCellSelectionStyleGray;
-    self.groupCell.textLabel.enabled = animalType == AnimalTypeCow;
-    self.groupCell.detailTextLabel.enabled = animalType == AnimalTypeCow;
-    
     self.tagTextField.text = [NSString stringWithFormat:@"%d", [self.object.tag unsignedIntegerValue]];
-    self.collarTextField.text = self.object.collar;
     
     NSString* dateOfBirdthString = @"";
     NSDate* dateOfBirdthDate = self.object.dateOfBirdth;
@@ -142,12 +127,12 @@
         self.treatment3Drug.text = [orderedTreatments[2] valueForKeyPath:@keypath(Treatment.new, drug.name)];
         self.treatment3Result.text = [orderedTreatments[2] valueForKeyPath:@keypath(Treatment.new, result)];
     }
-
+    
     [self.tableView reloadData];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    __weak MDEditCowViewController* weakSelf = self;
+    __weak MDEditCalfViewController* weakSelf = self;
     Animal* object = self.object;
     if ([segue.destinationViewController isKindOfClass:[MDSelectGroupViewController class]]) {
         GroupType group = self.object.groupType;
@@ -214,28 +199,10 @@
 - (void)doneAction {
     BOOL isValid = YES;
     NSString* errorMessage = nil;
-    NSString* collar = self.collarTextField.text;
     NSString* tagString = self.tagTextField.text;
     float tag = [tagString floatValue];
-    AnimalType type = self.object.animalType;
+    AnimalType type = AnimalTypeCalf;
     BOOL isIll = self.illButton.selected;
-    
-    if ((collar == nil || [collar isEqualToString:@""]) && type == 0) {
-        isValid = NO;
-        errorMessage = @"Введите номер ошейника";
-    } else if (type == 0) {
-        NSDictionary* commitedValues = [self.object committedValuesForKeys:@[@keypath(Animal.new, collar)]];
-        NSString* oldValue = [commitedValues valueForKey:@keypath(Animal.new, collar)];
-        if (oldValue == nil || ![oldValue isEqualToString:collar]) {
-            NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([Animal class])];
-            [request setPredicate:[NSPredicate predicateWithFormat:@"%K == %@",@keypath(Animal.new, collar),collar]];
-            NSUInteger count = [[self childContext] countForFetchRequest:request error:nil];
-            if (count > 0) {
-                isValid = NO;
-                errorMessage = @"Корова с таким ошейником уже существует";
-            }
-        }
-    }
     
     if ([tagString length] > 0 && tag == 0) {
         isValid = NO;
@@ -248,7 +215,6 @@
     }
     
     if (isValid) {
-        self.object.collar = collar;
         self.object.tag = @(tag);
         self.object.type = @(type);
         self.object.isIll = @(isIll);
@@ -265,15 +231,11 @@
 }
 
 - (void)viewDidUnload {
-    [self setCollarTextField:nil];
     [self setTagTextField:nil];
-    [self setCollarLabel:nil];
     [self setIllButton:nil];
     [self setIllCell:nil];
-    [self setGroupCell:nil];
     [self setDateOfBirdthCell:nil];
     [self setTagCell:nil];
-    [self setCollarCell:nil];
     [self setTreatmentCell1:nil];
     [self setTreatmentCell2:nil];
     [self setTreatmentCell3:nil];
@@ -289,9 +251,6 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     if (textField == self.tagTextField) {
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:self.tagCell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-    }
-    if (textField == self.collarTextField) {
-        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:self.collarCell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
     return YES;
 }
@@ -314,10 +273,6 @@
         float tag = [self.tagTextField.text floatValue];
         self.object.tag = @(tag);
     }
-    if (textField == self.collarTextField) {
-        NSString* collar = self.collarTextField.text;
-        self.object.collar = collar;
-    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -330,10 +285,6 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.tagTextField) {
-        [self.collarTextField becomeFirstResponder];
-    }
-    if (textField == self.collarTextField) {
-        [self.tagTextField resignFirstResponder];
     }
     return YES;
 }
@@ -343,9 +294,6 @@
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     AnimalType animalType = self.object.animalType;
     if ([tableView cellForRowAtIndexPath:indexPath] == self.dateOfBirdthCell && animalType == AnimalTypeCow) {
-        return nil;
-    }
-    if ([tableView cellForRowAtIndexPath:indexPath] == self.groupCell && animalType == AnimalTypeCalf) {
         return nil;
     }
     return indexPath;
@@ -363,7 +311,7 @@
     }
     if ([tableView cellForRowAtIndexPath:indexPath] == self.illCell) {
     }
-
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

@@ -36,6 +36,7 @@
 		922179D0178B496E00AEB3C4 /* MDDrugListBihavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 922179CF178B496E00AEB3C4 /* MDDrugListBihavior.m */; };
 		922179D2178B557200AEB3C4 /* Cow-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 922179D1178B557200AEB3C4 /* Cow-32.png */; };
 		922179D4178B582F00AEB3C4 /* calf.png in Resources */ = {isa = PBXBuildFile; fileRef = 922179D3178B582F00AEB3C4 /* calf.png */; };
+		9245212C1841F8DB0086B135 /* MDEditCalfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9245212B1841F8DB0086B135 /* MDEditCalfViewController.m */; };
 		929A395F17804CCB00B8DC05 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929A395E17804CCB00B8DC05 /* UIKit.framework */; };
 		929A396117804CCB00B8DC05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929A396017804CCB00B8DC05 /* Foundation.framework */; };
 		929A396317804CCB00B8DC05 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 929A396217804CCB00B8DC05 /* CoreGraphics.framework */; };
@@ -112,6 +113,10 @@
 		922179CF178B496E00AEB3C4 /* MDDrugListBihavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDrugListBihavior.m; sourceTree = "<group>"; };
 		922179D1178B557200AEB3C4 /* Cow-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cow-32.png"; sourceTree = "<group>"; };
 		922179D3178B582F00AEB3C4 /* calf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calf.png; sourceTree = "<group>"; };
+		9245212A1841F8DB0086B135 /* MDEditCalfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDEditCalfViewController.h; sourceTree = "<group>"; };
+		9245212B1841F8DB0086B135 /* MDEditCalfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDEditCalfViewController.m; sourceTree = "<group>"; };
+		9245212D184211950086B135 /* Treatment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Treatment.h; path = Model/Treatment.h; sourceTree = "<group>"; };
+		9245212E184211950086B135 /* Treatment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Treatment.m; path = Model/Treatment.m; sourceTree = "<group>"; };
 		929A395B17804CCB00B8DC05 /* Farm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Farm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		929A395E17804CCB00B8DC05 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		929A396017804CCB00B8DC05 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -215,6 +220,8 @@
 				920CDB241781FF710084DFA4 /* Resources */,
 				47F1ADC31781B14C00695B29 /* MDEditCowViewController.h */,
 				47F1ADC41781B14C00695B29 /* MDEditCowViewController.m */,
+				9245212A1841F8DB0086B135 /* MDEditCalfViewController.h */,
+				9245212B1841F8DB0086B135 /* MDEditCalfViewController.m */,
 				92E8E2CD1786395600C541D6 /* MDSelectGroupViewController.h */,
 				92E8E2CE1786395600C541D6 /* MDSelectGroupViewController.m */,
 				47928F8D17871E4D005251B3 /* MDDatePickerViewController.h */,
@@ -320,6 +327,8 @@
 				929A397B17804CCC00B8DC05 /* MDMasterViewController.h */,
 				929A397C17804CCC00B8DC05 /* MDMasterViewController.m */,
 				929A397817804CCC00B8DC05 /* Farm.xcdatamodeld */,
+				9245212D184211950086B135 /* Treatment.h */,
+				9245212E184211950086B135 /* Treatment.m */,
 				92BB88CA178608B600676B00 /* MainStoryboard.storyboard */,
 				929A396717804CCB00B8DC05 /* Supporting Files */,
 			);
@@ -527,6 +536,7 @@
 				47699D7217E33DC100FFC094 /* Treatment.m in Sources */,
 				47699D7517E33DC100FFC094 /* Animal.m in Sources */,
 				47699D7817E33DC100FFC094 /* Drug.m in Sources */,
+				9245212C1841F8DB0086B135 /* MDEditCalfViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
